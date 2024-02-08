@@ -6,7 +6,7 @@ source ~/.bashrc && source ~/.profile
 export LC_ALL=C && export USE_CCACHE=1
 ccache -M 100G
 export ARCH=arm64
-export KBUILD_BUILD_HOST="LMAOxDEVS"
+export KBUILD_BUILD_HOST="ECLIPSExDEV"
 export KBUILD_BUILD_USER="Shub"
 
 if [ -d "clang" ];
@@ -34,25 +34,25 @@ make -j$(nproc --all) O=out \
                       LD=ld.lld \
                       STRIP=llvm-strip \
                       AS=llvm-as \
-		      AR=llvm-ar \
-		      NM=llvm-nm \
-		      OBJCOPY=llvm-objcopy \
-		      OBJDUMP=llvm-objdump \
+		              AR=llvm-ar \
+		              NM=llvm-nm \
+		              OBJCOPY=llvm-objcopy \
+		              OBJDUMP=llvm-objdump \
                       CLANG_TRIPLE=aarch64-linux-gnu- \
                       CROSS_COMPILE="${PWD}/arm64/bin/aarch64-linux-android-" \
                       CROSS_COMPILE_ARM32="${PWD}/arm32/bin/arm-linux-androideabi-" \
-		      CROSS_COMPILE_COMPAT="${PWD}/arm32/bin/arm-linux-androideabi-" \
+		              CROSS_COMPILE_COMPAT="${PWD}/arm32/bin/arm-linux-androideabi-" \
                       CONFIG_NO_ERROR_ON_MISMATCH=y 2>&1 | tee error.log 
 }
 
 function upload()
 {	
-git clone --depth=1 https://github.com/shub876/Anykernel3.git -b any Anykernel3
+git clone --depth=1 https://github.com/shub876/Anykernel3.git -b fire Anykernel3
 cp out/arch/arm64/boot/Image.gz-dtb Anykernel3
 cd Anykernel3
-zip -r9 LMAO-OSS-KERNEL-FIRE-T.zip *
-curl --upload-file "LMAO-OSS-KERNEL-FIRE-T.zip" https://free.keep.sh
-curl bashupload.com -T LMAO-OSS-KERNEL-FIRE-T.zip
+zip -r9 ECLIPSE-OSS-KERNEL-FIRE-T.zip *
+curl --upload-file "ECLIPSE-OSS-KERNEL-FIRE-T.zip" https://free.keep.sh
+curl bashupload.com -T ECLIPSE-OSS-KERNEL-FIRE-T.zip
 }
 compile
 upload
