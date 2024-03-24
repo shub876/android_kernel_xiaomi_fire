@@ -440,7 +440,7 @@ KBUILD_CFLAGS   := -Wall -Wundef -Wstrict-prototypes -Wno-trigraphs \
 		   -fno-strict-aliasing -fno-common -fshort-wchar \
 		   -Werror-implicit-function-declaration \
 		   -Werror=return-type -Wno-format-security \
-		   -std=gnu89
+		   -std=gnu89 -Wno-unused-but-set-variable
 
 ifeq ($(strip $(WT_COMPILE_FACTORY_VERSION)), yes)
  KBUILD_CFLAGS  += -DWT_COMPILE_FACTORY_VERSION
